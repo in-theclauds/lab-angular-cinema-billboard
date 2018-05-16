@@ -76,7 +76,6 @@ export class Movies {
         hours: 'Thursday 19:30, 22:30',
         room: 4
       }, {
-      {
         id: 5,
         title: 'Schindlers List',
         poster: 'https://i.imgur.com/IWZJOmu.jpg',
@@ -107,4 +106,5 @@ export class Movies {
     getMovie(idMovie: number): Object {
       return _.findWhere(this.movieArray, { id: idMovie });
     }
+// tslint:disable-next-line:eofline
 };
