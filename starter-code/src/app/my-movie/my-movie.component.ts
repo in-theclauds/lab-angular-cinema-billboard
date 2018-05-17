@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Movies } from '../movies.service';
 
 @Component({
   selector: 'app-my-movie',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyMovieComponent implements OnInit {
 
-  constructor() { }
+  theMovie: any = {};
+
+  constructor( private route: ActivatedRoute,
+              private myService: Movies) { }
 
   ngOnInit() {
+    this.route.params
+      .subscribe((theParams) => {
+        const theID = Number(theParams['id']);
+        this.theMovie = this.myService.getMovie(theID);
+        console.log(this.theMovie);
+    });
   }
 
 }

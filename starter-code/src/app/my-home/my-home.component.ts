@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-// import { Movies } from './movies.service';
+import { Movies } from '../movies.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-home',
@@ -9,9 +9,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MyHomeComponent implements OnInit {
 
-  constructor() { }
+  allTheMovies: Array <any> = [];
+
+  constructor( private myService: Movies,
+                private myRouter: Router) { }
+
+  goToMoviePage(theIDArgument) {
+    this.myRouter.navigate(['/movies', theIDArgument]);
+  }
 
   ngOnInit() {
+    this.allTheMovies = this.myService.getMovies();
+    console.log(this.allTheMovies);
   }
 
 }

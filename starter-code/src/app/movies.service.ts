@@ -3,7 +3,7 @@ import * as _ from 'underscore';
 
 @Injectable()
 export class Movies {
-    movieArray: Array<any> = [
+  moviesArray: Array<any> = [
       {
         id: 1,
         title: 'The Shawshank Redemption',
@@ -100,11 +100,14 @@ export class Movies {
     constructor() { }
 
     getMovies(): Array <Object> {
-      return this.movieArray;
+      return this.moviesArray;
     }
 
-    getMovie(idMovie: number): Object {
-      return _.findWhere(this.movieArray, { id: idMovie });
+    getMovie(theId) {
+      const theMovie = this.moviesArray.find((oneMovie) => {
+        return oneMovie.id === theId;
+      });
+      return theMovie;
     }
 // tslint:disable-next-line:eofline
 };
